@@ -1,0 +1,8 @@
+server:
+  port: ${SERVER_PORT:8080}
+
+spring:
+  application:
+    name: voting-api
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
