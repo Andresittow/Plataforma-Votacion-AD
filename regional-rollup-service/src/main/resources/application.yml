@@ -6,5 +6,22 @@ spring:
     name: regional-rollup-service
   kafka:
     bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    consumer:
+      group-id: regional-rollup-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
   rabbitmq:
     host: ${RABBITMQ_HOST:localhost}
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USERNAME:guest}
+    password: ${RABBITMQ_PASSWORD:guest}
+
+rollup:
+  strategy: ${ROLLUP_STRATEGY:uniform}
+  weights:
+    norte: ${ROLLUP_WEIGHTS_NORTE:1.2}
+    sur: ${ROLLUP_WEIGHTS_SUR:0.9}
+    este: ${ROLLUP_WEIGHTS_ESTE:1.0}
+    oeste: ${ROLLUP_WEIGHTS_OESTE:1.1}
+    centro: ${ROLLUP_WEIGHTS_CENTRO:1.0}
